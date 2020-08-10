@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes(['verify'=>true]);
+//Auth::routes(['verify'=>true]);
+//
+//Route::get('/', function () {
+//    return view('welcome');
+//})->middleware('verified');
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware('verified');
+});
+
+//Route::resource('compony', 'ComponyController')->middleware('verified');
 
 
