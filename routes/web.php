@@ -23,6 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::resource('compony', 'ComponyController')->middleware('verified');
+//Route::post('compony/email', 'ComponyController@basic_email');
 
-
+Route::get('/compony', 'ComponyController@index');

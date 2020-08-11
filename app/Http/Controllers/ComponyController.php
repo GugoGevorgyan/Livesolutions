@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
+use App\Mail\FeedbackMail;
 
 class ComponyController extends Controller
 {
@@ -13,8 +16,7 @@ class ComponyController extends Controller
      */
     public function index()
     {
-//        return @csrf_token();
-        return "ggg";
+        return csrf_token();
     }
 
     /**
@@ -30,29 +32,25 @@ class ComponyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function email()
     {
-        //
+        return "ggg";
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function store(Request $request)
     {
-        //
+
     }
+
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -60,11 +58,17 @@ class ComponyController extends Controller
         //
     }
 
+    public function show()
+    {
+        dd('asdcasdcsacd');
+//        echo $id;
+    }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -75,11 +79,32 @@ class ComponyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+    public function verify()
+    {
+        dd($_GET);
+    }
+
+    public function send()
+    {
+        $generete = 'hgcgfc54e76gfcgf';
+        $userEmail = 'esminch@fgc.cob';
+        $comment = "Go to by this
+                <a href=`http://127.0.0.1:8000/api/verify/?token=${generete}&email=${userEmail}`>
+                link
+                </a> to verify your email";
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+        $toEmail = "gugo.90@bk.ru";
+        Mail::to($toEmail)->send(new FeedbackMail($comment));
+
+        return 'Message sent to address ' . " " . $toEmail;
     }
 }
