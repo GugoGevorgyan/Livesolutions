@@ -24,6 +24,7 @@ class RegisterController extends Controller
             'status' => Str::random(20),
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'role_id' => $request['role_id'],
         ]);
     }
 

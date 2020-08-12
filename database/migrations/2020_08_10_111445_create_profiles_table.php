@@ -22,9 +22,8 @@ class CreateProfilesTable extends Migration
             $table->string('status')->nullable();
             $table->string('site')->nullable();
             $table->string('code')->nullable();
-            $table->bigInteger('role_id')->unsigned();
+            $table->bigInteger('role_id')->unsigned()->nullable();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
