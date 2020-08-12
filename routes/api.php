@@ -19,7 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+
 Route::resource('/company', 'CompanyController');
-//Route::get('/compony/mail','CompanyController@email');
 Route::get('/send-email', 'CompanyController@send');
 Route::get('/verify', 'CompanyController@verify');
+
+Route::post('/login', 'Api\LoginController@login');
