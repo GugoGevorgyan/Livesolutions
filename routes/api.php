@@ -19,10 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+Route::group( ['middleware' => 'company' ], function() {
+    Route::resource('/company', 'CompanyController');
+    Route::get('/send-email', 'CompanyController@send');
+    Route::get('/verify', 'CompanyController@verify');
+});
 
-Route::resource('/company', 'CompanyController');
-Route::get('/send-email', 'CompanyController@send');
-Route::get('/verify', 'CompanyController@verify');
 
 Route::post('/login', 'Api\LoginController@login');
 Route::post('/register', 'Api\RegisterController@create');

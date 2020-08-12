@@ -24,8 +24,6 @@ Route::get('/', function () {
 });
 
 
-//Route::post('compony/email', 'CompanyController@basic_email');
-
 Route::get('/company', 'CompanyController@index');
 
 Route::get('/token', function () {
