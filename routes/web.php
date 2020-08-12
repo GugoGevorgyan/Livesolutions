@@ -23,6 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::post('compony/email', 'ComponyController@basic_email');
+//Route::post('compony/email', 'CompanyController@basic_email');
 
-Route::get('/compony', 'ComponyController@index');
+Route::get('/company', 'CompanyController@index');

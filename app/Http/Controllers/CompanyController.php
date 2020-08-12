@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use App\Mail\FeedbackMail;
 
-class ComponyController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -89,7 +89,7 @@ class ComponyController extends Controller
 
     public function verify()
     {
-        dd($_GET);
+        dd($_GET['email']);
     }
 
     public function send()

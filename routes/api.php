@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('/compony', 'ComponyController');
-//Route::get('/compony/mail','ComponyController@email');
-Route::get('/send-email', 'ComponyController@send');
-Route::get('/verify', 'ComponyController@verify');
+Route::resource('/company', 'CompanyController');
+//Route::get('/compony/mail','CompanyController@email');
+Route::get('/send-email', 'CompanyController@send');
+Route::get('/verify', 'CompanyController@verify');
