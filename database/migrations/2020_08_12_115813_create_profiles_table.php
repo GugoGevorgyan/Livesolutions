@@ -20,7 +20,7 @@ class CreateProfilesTable extends Migration
             $table->string('address');
             $table->string('email')->unique();
             $table->string('passport');
-            $table->string('status');
+            $table->string('status')->default(0);
             $table->string('password');
             $table->bigInteger('role_id')->unsigned();
             $table->string('site')->nullable();
