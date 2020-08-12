@@ -19,13 +19,12 @@ class CreateProfilesTable extends Migration
             $table->string('phone');
             $table->string('address');
             $table->string('passport');
-            $table->string('status')->nullable();
+            $table->string('status')->default(0);
+            $table->string('password');
+            $table->bigInteger('role_id')->unsigned();
             $table->string('site')->nullable();
             $table->string('code')->nullable();
-            $table->bigInteger('role_id')->unsigned();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
 
