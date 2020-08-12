@@ -16,7 +16,7 @@ class Profile extends Model
     protected $guard = 'profile';
 
     protected $fillable = [
-      'email', 'password','fullName','phone','address','passport','site','code','status'
+      'email', 'password','fullName','phone','address','passport','site','code','status','role_id',
     ];
 
 
