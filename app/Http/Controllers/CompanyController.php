@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use App\Mail\FeedbackMail;
@@ -87,17 +89,22 @@ class CompanyController extends Controller
         //
     }
 
-    public function verify()
+    public function verify(Request $request)
     {
-        dd($_GET['email']);
+        $user = DB::table('profiles')->where('email',$request->email)->get();
+        $user_id =$user[0]->id;
+        Profile::where('id', $user_id)->update([
+            'status'=> 1,
+        ]);
+        return 'ok';
     }
 
     public function send()
     {
         $generete = 'hgcgfc54e76gfcgf';
-        $userEmail = 'esminch@fgc.cob';
+        $userEmail = 'gg.@bk.ru';
         $comment = "Go to by this
-                <a href=`http://127.0.0.1:8000/api/verify/?token=${generete}&email=${userEmail}`>
+                <a href=http://127.0.0.1:8000/api/verify/?token=${generete}&email=${userEmail}>
                 link
                 </a> to verify your email";
         $headers[] = 'MIME-Version: 1.0';

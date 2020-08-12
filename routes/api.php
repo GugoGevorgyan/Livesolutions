@@ -25,3 +25,4 @@ Route::get('/send-email', 'CompanyController@send');
 Route::get('/verify', 'CompanyController@verify');
 
 Route::post('/login', 'Api\LoginController@login');
+Route::post('/register', 'Api\RegisterController@create');
