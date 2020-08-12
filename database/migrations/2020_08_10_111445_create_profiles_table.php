@@ -18,13 +18,15 @@ class CreateProfilesTable extends Migration
             $table->string('fullName');
             $table->string('phone');
             $table->string('address');
-            $table->string('email')->unique();
             $table->string('passport');
-            $table->string('status');
-            $table->string('password');
-            $table->bigInteger('role_id')->unsigned();
+            $table->string('status')->nullable();
             $table->string('site')->nullable();
             $table->string('code')->nullable();
+            $table->bigInteger('role_id')->unsigned();
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('role_id')
