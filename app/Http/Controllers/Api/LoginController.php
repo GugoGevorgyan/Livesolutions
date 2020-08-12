@@ -8,14 +8,16 @@ use App\User;
 
 class LoginController extends Controller
 {
+    public function logintest($data){
+        return 'sadsac';
+    }
+
     public function login(Request $request)
     {
-
         $validatedData = $request->validate([
             'email' => 'email|required',
             'password' => 'required'
         ]);
-
         if (!auth()->guard('profile')->attempt($validatedData)) {
             return response(['message' => 'Your credentials are incorrect']);
         }

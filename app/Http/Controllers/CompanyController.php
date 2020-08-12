@@ -91,20 +91,20 @@ class CompanyController extends Controller
 
     public function verify(Request $request)
     {
-        $user = DB::table('profiles')->where('email',$request->email)->get();
-        $user_id =$user[0]->id;
-        Profile::where('id', $user_id)->update([
-            'status'=> 1,
-        ]);
+        $user = DB::table('profiles')->where('status',$request->code)->update('status',1);
+//        $user_id =$user[0]->id;
+//        Profile::where('id', $user_id)->update([
+//            'status'=> 1,
+//        ]);
         return 'ok';
     }
 
-    public function send()
+    public function send($code)
     {
-        $generete = 'hgcgfc54e76gfcgf';
+//        $generete = 'hgcgfc54e76gfcgf';
         $userEmail = 'gg.@bk.ru';
         $comment = "Go to by this
-                <a href=http://127.0.0.1:8000/api/verify/?token=${generete}&email=${userEmail}>
+                <a href=http://127.0.0.1:8000/api/verify/?code=${$code}>
                 link
                 </a> to verify your email";
         $headers[] = 'MIME-Version: 1.0';
