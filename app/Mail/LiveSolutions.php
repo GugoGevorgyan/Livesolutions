@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class FeedbackMail extends Mailable
+class LiveSolutions extends Mailable
 {
     use Queueable, SerializesModels;
     public $feedback;
@@ -31,3 +31,4 @@ class FeedbackMail extends Mailable
         return $this->view('email.email');
     }
 }
+

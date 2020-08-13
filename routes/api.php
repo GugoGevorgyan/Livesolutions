@@ -20,15 +20,10 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-
-Route::group( ['middleware' => 'company' ], function() {
-    Route::resource('/company', 'CompanyController');
-    Route::get('/send-email', 'CompanyController@send');
-    Route::get('/verify', 'CompanyController@verify');
-});
 Route::group(['namespace'=>'Api'],function(){
-    Route::post('/login', 'LoginController@login')
+    Route::post('/login', 'LoginController@login')->name('login');
     Route::post('/register', 'RegisterController@create');
+    Route::get('/verify', 'RegisterController@verify');
 });
 
 Route::post('/product_store', 'ProductController@store');

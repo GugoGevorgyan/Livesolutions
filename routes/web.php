@@ -23,11 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-Route::get('/company', 'CompanyController@index');
-
 Route::get('/token', function () {
     return csrf_token();
 });
-
