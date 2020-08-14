@@ -21,7 +21,11 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::group(['namespace'=>'Api'],function(){
+<<<<<<< HEAD
     Route::post('/login', 'LoginController@login')->name('login');
+=======
+    Route::post('/login', 'LoginController@login');
+>>>>>>> 374bbb28145ce587ce06ced57fe309645bbcb8d9
     Route::post('/register', 'RegisterController@create');
     Route::get('/verify', 'RegisterController@verify');
 });

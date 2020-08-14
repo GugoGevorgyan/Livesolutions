@@ -26,3 +26,8 @@ Route::get('/', function () {
 Route::get('/token', function () {
     return csrf_token();
 });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 374bbb28145ce587ce06ced57fe309645bbcb8d9
