@@ -27,7 +27,7 @@ Route::group( ['middleware' => 'company' ], function() {
     Route::get('/verify', 'CompanyController@verify');
 });
 Route::group(['namespace'=>'Api'],function(){
-    Route::post('/login', 'LoginController@login')
+    Route::post('/login', 'LoginController@login');
     Route::post('/register', 'RegisterController@create');
 });
 

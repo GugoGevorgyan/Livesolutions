@@ -114,4 +114,5 @@ class CompanyController extends Controller
 
         return 'Message sent to address ' . " " . $toEmail;
     }
+
 }

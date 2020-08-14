@@ -8,21 +8,26 @@ use App\Product;
 class ProductController extends Controller
 {
     public function store(Request $request){
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'required|file|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|max:255',
         ]);
-        if(isset($request->image) && $request->image->getClientOriginalName()){
-            $ext = $request->image->getClientOriginalExtension();
-            $file = time()."."."$ext";
-            $request->image->storeAs('public/images', $file);
+
+        $images=array();
+        if($files = $request->file('images')){
+            foreach($files as $file){
+                $name=time().$file->getClientOriginalName();
+                $file->storeAs('images', $name);
+                $images[]=$name;
+            }
         }
-        $product = new Product();
-        $product->name = $validatedData['name'];
-        $product->image = $file;
-        $product->description = $validatedData['description'];
-        $product->save();
-        return $product;
+
+        Product::insert( [
+            'image'=>  json_encode($images),
+            'description' =>$request->description,
+            'name' => $request->name
+        ]);
+        return 'Your product has been sent';
     }
 }
